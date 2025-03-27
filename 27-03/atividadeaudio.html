@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade de Audio</title>
+    <script src=""></script>
+</head>
+<body>
+    <audio id="audio" controls>
+        <source src="musica.mp3" type="audio/mp3">
+    </audio>
+    <button onclick="mostrarTempoAtual()">Mostrar Tempo Atual</button>
+    <button onclick="alterarTempo()">Alterar Tempo</button>
+    <script>
+        var audio = document.getElementById('audio');
+
+        function mostrarTempoAtual() {
+            alert("Tempo atual: " + audio.currentTime + " segundos");
+        }
+
+        function alterarTempo() {
+            audio.currentTime = 30; 
+        }
+    </script>
+    
+    <button onclick="mutarAudio()">Mutar</button>
+    <button onclick="desmutarAudio()">Desmutar</button>
+    <script>
+        var audio = document.getElementById('audio');
+    
+        function mutarAudio() {
+            audio.muted = true;
+        }
+    
+        function desmutarAudio() {
+            audio.muted = false;
+        }
+    </script>
+    
+    <button onclick="verificarPausado()">Verificar Se Está Pausado</button>
+    <script>
+        var audio = document.getElementById('audio');
+
+        function verificarPausado() {
+            if (audio.paused) {
+                alert("O áudio está pausado.");
+            } else {
+                alert("O áudio está em reprodução.");
+            }
+        }
+    </script>
+    
+    <button onclick="aumentarVelocidade()">Aumentar Velocidade</button>
+    <button onclick="diminuirVelocidade()">Diminuir Velocidade</button>
+    <script>
+        var audio = document.getElementById('audio');
+
+        function aumentarVelocidade() {
+            audio.playbackRate += 0.5; // Aumenta a velocidade em 0.5
+        }
+
+        function diminuirVelocidade() {
+            audio.playbackRate -= 0.5; // Diminui a velocidade em 0.5
+        }
+    </script>
+    
+    <button onclick="verificarCarregamento()">Verificar Estado</button>
+    <script>
+        var audio = document.getElementById('audio');
+
+        function verificarCarregamento() {
+            alert("Estado de carregamento: " + audio.readyState);
+        }
+    </script>
+     
+     <button onclick="verificarSeeking()">Verificar Seeking</button>
+     <script>
+         var audio = document.getElementById('audio');
+ 
+         function verificarSeeking() {
+             if (audio.seeking) {
+                 alert("Está tentando mudar o tempo de reprodução.");
+             } else {
+                 alert("Não está tentando mudar o tempo de reprodução.");
+             }
+         }
+     </script>
+     
+     <button onclick="toggleControls()">Alternar Controles</button>
+     <script>
+         var audio = document.getElementById('audio');
+ 
+         function toggleControls() {
+             audio.controls = !audio.controls;
+         }
+     </script>
+    
+    <button onclick="recarregarAudio()">Recarregar Áudio</button>
+     <script>
+         var audio = document.getElementById('audio');
+ 
+         function recarregarAudio() {
+             audio.load(); // Recarrega o áudio
+         }
+     </script>
+
+    <button onclick="mostrarDuracao()">Mostrar Duração</button>
+    <script>
+        var audio = document.getElementById('audio');
+
+        function mostrarDuracao() {
+            alert("Duração total: " + audio.duration + " segundos");
+        }
+    </script>
+
+    <button onclick="verificarTerminado()">Verificar Terminado</button>
+    <script>
+        var audio = document.getElementById('audio');
+
+        function verificarTerminado() {
+            if (audio.ended) {
+                alert("O áudio terminou.");
+            } else {
+                alert("O áudio ainda está tocando.");
+            }
+        }
+    </script>
+
+
+</body>
+</html>
