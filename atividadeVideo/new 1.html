@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manipulação de Vídeo com JavaScript</title>
+<style>
+    body {
+        background-image: url('img3.jpg'); 
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        height: 100vh;
+        margin: 0;
+        text-align: center;
+    }
+
+    video {
+        margin-bottom: 20px;
+		display: block; 
+        margin: 0 auto; 
+		border: 2px solid #000000;
+        border-radius: 5px; 
+    }
+	.button-container {
+        margin-bottom: 20px;
+    }
+
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+		margin-bottom: 30px;
+    }
+
+    header img {
+        width: 100px; 
+        height: 50px; 
+    }
+	
+	
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="logo2.png" alt="Logo">
+</header>
+
+<div class="video-container">
+    <video id="video1" width="400" height="300" controls  loop poster="po.jpg">
+        <source src="msc.mp4" type="video/mp4">
+        <track kind="subtitles" src="legenda.vtt" srclang="pt-br" label="Português">
+    </video>
+    <div class="button-container">
+        <button onclick="pauseVideo('video1')">Pausar Video</button>
+        <button onclick="playVideo('video1')">Reproduzir Video</button>
+    </div>
+	
+	<div class="button-container">
+        <button onclick="Aumentar()">Aumentar Tamanho</button>
+        <button onclick="Diminuir()">Diminuir Tamanho</button>
+        <button onclick="getVideoAttributes('video1')">Informar Atributos</button>
+        <button onclick="togglePoster('video1')">Alternar Poster</button>
+    </div>
+</div>
+
+<div class="video-container">
+    <video id="video2" width="400" height="300" controls  loop poster="po2.jpg">
+        <source src="msc2.mp4" type="video/mp4">
+        <track kind="subtitles" src="legenda.vtt" srclang="pt-br" label="Português">
+    </video>
+    <div class="button-container">
+        <button onclick="pauseVideo('video2')">Pausar Video</button>
+        <button onclick="playVideo('video2')">Reproduzir Video</button>
+    </div>
+	
+	<div class="button-container">
+        <button onclick="Aumentar2()">Aumentar Tamanho</button>
+        <button onclick="Diminuir2()">Diminuir Tamanho</button>
+        <button onclick="getVideoAttributes('video2')">Informar Atributos</button>
+        <button onclick="togglePoster('video2')">Alternar Poster</button>
+    </div>
+	
+</div>
+
+
+
+<script>
+
+function Diminuir() {
+    var video = document.getElementById('video1');
+    video.style.transform ="scale(0.8)";
+}
+function Aumentar() {
+    var video = document.getElementById('video1');
+    video.style.transform = "scale(1.1)";
+}
+    function Diminuir2() {
+    var video = document.getElementById('video2');
+    video.style.transform ="scale(0.8)";
+}
+function Aumentar2() {
+    var video = document.getElementById('video2');
+    video.style.transform = "scale(1.1)";
+}
+
+function getVideoAttributes(videoId) {
+    var video = document.getElementById(videoId);
+    var attributes = "currentSrc: " + video.currentSrc + "\n" +
+                     "controls: " + video.controls + "\n" +
+                     "autoplay: " + video.autoplay + "\n" +
+                     "loop: " + video.loop + "\n" +
+                     "poster: " + video.poster + "\n" +
+                     "id: " + video.id + "\n" +
+                     "width: " + video.width + "\n" +
+                     "height: " + video.height;
+    alert(attributes);
+}
+
+function togglePoster(videoId) {
+    var video = document.getElementById(videoId);
+    if (video.poster === "po.jpg") {
+        video.poster = "po2.jpg";
+    } else {
+        video.poster = "po.jpg";
+    }
+}
+
+// Função para pausar um vídeo
+function pauseVideo(videoId) {
+    var video = document.getElementById(videoId);
+    video.pause();
+}
+
+// Função para reproduzir um vídeo
+function playVideo(videoId) {
+    var video = document.getElementById(videoId);
+    video.play();
+}
+
+// Adicionando eventos de pausa e finalização do vídeo
+var video1 = document.getElementById("video1");
+video1.addEventListener("pause", function() {
+    alert("O vídeo 1 foi pausado.");
+});
+video1.addEventListener("ended", function() {
+    alert("O vídeo 1 foi finalizado.");
+});
+
+var video2 = document.getElementById("video2");
+video2.addEventListener("pause", function() {
+    alert("O vídeo 2 foi pausado.");
+});
+video2.addEventListener("ended", function() {
+    alert("O vídeo 2 foi finalizado.");
+});
+</script>
+
+</body>
+</html>
